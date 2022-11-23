@@ -14,14 +14,12 @@ public class SampleTest extends BaseTest {
 public void checkBoxTest() throws InterruptedException {
 	HomePage homePage = new HomePage(page);
 	homePage.openApplication();
-	Thread.sleep(15000);
 	assertThat(homePage.isPageChecked("(//input[@type='checkbox'])[1]")).isEqualTo(true);
 }
 
 @Test
 public void handleModelWindow() throws InterruptedException {
 	HomePage homePage = new HomePage(page);
-	Thread.sleep(15000);
 	homePage.openComputerDatabase();
 }
 

@@ -4,14 +4,10 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 
-public class Chrome implements IBrowserType {
-
-
+public class Firefox implements IBrowserType{
 @Override
 public Browser getBrowserType() {
 	Playwright playwright = Playwright.create();
-	return playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+	return playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
 }
-
-
 }

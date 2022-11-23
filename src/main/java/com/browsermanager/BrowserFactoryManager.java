@@ -9,8 +9,8 @@ public class BrowserFactoryManager {
 private static Logger logger = LoggerHelper.getLogger(BrowserFactoryManager.class);
 private String browserType;
 
-Browser browser;
-
+IBrowserType ibrowserType;
+private Browser browser;
 
 public BrowserFactoryManager(String browserType) {
 	this.browserType = browserType;
@@ -18,16 +18,19 @@ public BrowserFactoryManager(String browserType) {
 
 public Browser launchBrowser() {
 	logger.info("Running launchBrowser...");
-	Playwright playwright = Playwright.create();
 	switch (browserType.toLowerCase()) {
 		case "chrome":
-			browser = new Chrome().getBrowserType();
+			ibrowserType = new Chrome();
+			break;
+		case "firefox":
+			ibrowserType = new Firefox();
 			break;
 		default:
 			System.out.println("Pass the correct browserType.... Suggestions include chrome,firefox");
 			break;
 	}
 	logger.info("Browser object of type : " + browserType.toLowerCase() + " created successfully...");
+	this.browser= ibrowserType.getBrowserType();
 	return browser;
 }
 
